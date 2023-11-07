@@ -2,6 +2,7 @@ import json
 import praw
 from praw.models import Submission
 from azure.eventhub import EventHubProducerClient, EventData
+import logging
 
 
 creds = {}
@@ -49,6 +50,8 @@ with producer_client:
     for post in top_posts:
         print('------------------------')
         print('Sending post to Event Hub...')
+        logging.warning('------------------------')
+        logging.warning('Sending post to Event Hub...')
         
         json_data = json.dumps(post, default=submission_serializer)
 
@@ -57,6 +60,8 @@ with producer_client:
         
         print('\tDone!')
         print('------------------------')
+        logging.warning('\tDone!')
+        logging.warning('------------------------')
 
     while True:
         continue
