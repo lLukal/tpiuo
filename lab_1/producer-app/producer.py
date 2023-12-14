@@ -41,8 +41,6 @@ reddit = praw.Reddit(client_id=reddit_client_id,
 subreddit = reddit.subreddit(reddit_subreddit)
 top_posts = subreddit.top(limit=reddit_post_limit, time_filter='all')
 
-# Comment
-
 # Azure Event Hub part
 producer_client = EventHubProducerClient.from_connection_string(conn_str=eventhub_connection_str, eventhub_name=eventhub_name)
 
