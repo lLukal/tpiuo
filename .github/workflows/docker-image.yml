@@ -44,6 +44,10 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Check directory
+        run: |
+          ls -l
       
       - name: Build and deploy to Azure Container Apps
         uses: azure/container-apps-deploy-action@v1
