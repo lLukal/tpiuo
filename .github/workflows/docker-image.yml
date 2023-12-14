@@ -10,10 +10,9 @@ jobs:
   editorconfig:
     runs-on: ubuntu-latest
     steps:
-      - name: Check code with EditorConfig
-        uses: stefanzweifel/editorconfig-checker@v3
-        with:
-          config-path: .editorconfig
+      - uses: actions/checkout@v2
+      - uses: editorconfig-checker/action-editorconfig-checker@main
+      - run: editorconfig-checker
 
   linter:
     runs-on: ubuntu-latest
