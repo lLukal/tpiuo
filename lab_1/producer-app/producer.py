@@ -10,7 +10,6 @@ creds = {}
 with open('creds.json') as f:
     creds = json.load(f)
     #print(creds)
-    
 
 reddit_client_id = creds['reddit_client_id']
 reddit_client_secret = creds['reddit_client_secret']
