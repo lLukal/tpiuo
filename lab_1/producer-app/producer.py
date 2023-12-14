@@ -26,7 +26,6 @@ eventhub_name = creds['eventhub_name']
 
 
 
-
 # Helper function for serializing Submission object to JSON
 def submission_serializer(submission):
     if isinstance(submission, Submission):
