@@ -44,18 +44,11 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
-
-      - name: Check directory
-        run: |
-          echo ${{ github.workspace }}
-          echo ls -l ${{ github.workspace }}
-          ls -l ${{ github.workspace }}
       
       - name: Build and deploy to Azure Container Apps
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: ${{ github.workspace }}/lab_1/producer-app
           acrName: tpiuoregistry
           containerAppName: producer-app
           resourceGroup: fervjestina
-          dockerfilePath: lab_1/producer-app/Dockerfile
+          dockerfilePath: Dockerfile
