@@ -55,4 +55,3 @@ jobs:
           acrName: tpiuoregistry
           containerAppName: producer-app
           resourceGroup: fervjestina
-          dockerfilePath: Dockerfile
