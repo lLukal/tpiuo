@@ -48,7 +48,7 @@ jobs:
       - name: Build and deploy to Azure Container Apps
         uses: azure/container-apps-deploy-action@v1
         with:
-          appSourcePath: ${{ github.workspace }}
+          appSourcePath: lab_1/producer-app
           acrName: tpiuoregistry
           containerAppName: producer-app
           resourceGroup: fervjestina
