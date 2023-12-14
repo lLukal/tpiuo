@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check code with EditorConfig
-        uses: haaang-wu/editorconfig-checker-action@v2
+        uses: stefanzweifel/editorconfig-checker@v3
         with:
           config-path: .editorconfig
 
