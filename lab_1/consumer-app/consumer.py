@@ -21,6 +21,7 @@ async def main():
         consumer_group="$Default",
         eventhub_name=eventhub_name
     )
+    logging.warning('Change')
     async with consumer_client:
         # -1 = read from beginning
         await consumer_client.receive(on_event=on_event, starting_position="-1")

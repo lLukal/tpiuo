@@ -60,7 +60,7 @@ with producer_client:
         print('------------------------')
         logging.warning('\tDone!')
         logging.warning('------------------------')
-        logging.warning('CHANGE!!!')
+        logging.warning('CHANGED!!!')
 
     while True:
         continue
