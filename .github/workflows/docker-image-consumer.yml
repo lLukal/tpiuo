@@ -54,3 +54,5 @@ jobs:
           appSourcePath: ${{ github.workspace }}/lab_1/consumer-app
           acrName: tpiuoregistry
           resourceGroup: fervjestina
+          acrUsername: ${{ secrets.ACR_USERNAME }}
+          acrPassword: ${{ secrets.ACR_PASSWORD }}
