@@ -47,6 +47,18 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set up Docker
+        uses: azure/docker-login@v1
+        with:
+          login-server: tpiuoregistry.azurecr.io 
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Build and push Docker image to Azure Container Registry
+        run: |
+          docker build -t tpiuoregistry.azurecr.io/producer-app:latest ${{ github.workspace }}/lab_1/producer-app
+          docker push tpiuoregistry.azurecr.io/producer-app:latest
       
       - name: Build and deploy to Azure Container Apps
         uses: azure/container-apps-deploy-action@v1
@@ -55,3 +67,5 @@ jobs:
           acrName: tpiuoregistry
           containerAppName: producer-app
           resourceGroup: fervjestina
+          acrUsername: ${{ secrets.ACR_USERNAME }}
+          acrPassword: ${{ secrets.ACR_PASSWORD }}
