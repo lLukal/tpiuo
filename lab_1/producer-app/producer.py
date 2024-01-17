@@ -33,7 +33,6 @@ def submission_serializer(submission):
         }
 
 
-
 # Reddit API part
 reddit = praw.Reddit(client_id=reddit_client_id,
                      client_secret=reddit_client_secret,
