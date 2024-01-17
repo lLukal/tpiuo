@@ -47,6 +47,13 @@ jobs:
         uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Set up Docker
+        uses: azure/docker-login@v1
+        with:
+          login-server: tpiuocontainerregistry.azurecr.io
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
       
       - name: Build and deploy to Azure Container Apps
         uses: azure/container-apps-deploy-action@v1
