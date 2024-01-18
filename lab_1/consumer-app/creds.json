@@ -1,9 +1,0 @@
-{
-    "reddit_client_id": "h2rJyGjFflySD6SsBrE_Ug",
-    "reddit_client_secret": "cnhWrQOeluyO4BbgjoDbNPap3wfx-w",
-    "reddit_user_agent": "tpiuo-lab-1",
-    "reddit_username": "MladiKakonja",
-    "reddit_password": "fukutoom9",
-    "eventhub_connection_str": "Endpoint=sb://tpiuo-lab-1.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=RilKYmaWgqcJeM4RZWbm/tTUOWh2O9cbT+AEhHNgK7k=",
-    "eventhub_name": "tpiuo-1-1"
-}

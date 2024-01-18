@@ -47,8 +47,6 @@ producer_client = EventHubProducerClient.from_connection_string(conn_str=eventhu
 
 with producer_client:
     for post in top_posts:
-        print('------------------------')
-        print('Sending post to Event Hub...')
         logging.warning('------------------------')
         logging.warning('Sending post to Event Hub...')
         
@@ -57,11 +55,8 @@ with producer_client:
         event_data = EventData(body=json_data)
         producer_client.send_event(event_data)
         
-        print('\tDone!')
-        print('------------------------')
         logging.warning('\tDone!')
         logging.warning('------------------------')
-        logging.warning('CHANGED!!!')
         
         time.sleep(10)
 
