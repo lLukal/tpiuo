@@ -1,4 +1,5 @@
 import json
+import time
 import praw
 from praw.models import Submission
 from azure.eventhub import EventHubProducerClient, EventData
@@ -38,7 +39,7 @@ reddit = praw.Reddit(client_id=reddit_client_id,
                      username=reddit_username,
                      password=reddit_password)
 subreddit = reddit.subreddit(reddit_subreddit)
-top_posts = subreddit.top(limit=reddit_post_limit, time_filter='all')
+top_posts = subreddit.top(limit=reddit_post_limit, time_filter='all', params={'after': ''})
 
 
 # Azure Event Hub part
@@ -61,6 +62,8 @@ with producer_client:
         logging.warning('\tDone!')
         logging.warning('------------------------')
         logging.warning('CHANGED!!!')
+        
+        time.sleep(10)
 
     while True:
         continue
