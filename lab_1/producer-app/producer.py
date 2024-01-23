@@ -56,10 +56,11 @@ with producer_client:
         
         for post in top_posts:
             json_data = json.dumps(post, default=submission_serializer)
-            all_posts.append(json_data)
+            event_data = EventData(body=json_data)
+            all_posts.append(event_data)
 
-        batch_event_data = EventData(body=json.dumps(all_posts))
-        producer_client.send_event(batch_event_data)
+        # batch_event_data = EventData(body=json.dumps(all_posts))
+        producer_client.send_batch(all_posts)
         after_param = json.loads(json_data)['fullname'] if top_posts else ''
         
         logging.warning(f'\tDone...')
