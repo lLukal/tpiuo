@@ -36,7 +36,6 @@ async def on_event(partition_context, event):
     try:
         data = json.loads(event.body_as_str(encoding="UTF-8"))
         created_utc = datetime.datetime.utcfromtimestamp(data.get("created_utc"))
-
         # Save data to Data Lake
         await save_to_data_lake(data, created_utc)
     except Exception as e:

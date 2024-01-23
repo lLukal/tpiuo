@@ -57,7 +57,6 @@ with producer_client:
         
         logging.warning('\tDone!')
         logging.warning('------------------------')
-        
         logging.warning('\tModified...')
         logging.warning('!!!!!!!!!!!!!!!!!!!!!!!')
         
