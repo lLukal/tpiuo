@@ -55,7 +55,6 @@ with producer_client:
         json_data = None
         
         for post in top_posts:
-            logging.warning(post)
             json_data = json.dumps(post, default=submission_serializer)
             all_posts.append(json_data)
 

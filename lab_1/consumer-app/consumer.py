@@ -34,9 +34,12 @@ async def save_to_data_lake(data, created_time):
 async def on_event(partition_context, event):
     try:
         data = json.loads(event.body_as_str(encoding="UTF-8"))
-        created_utc = datetime.datetime.utcfromtimestamp(data.get("created_utc"))
-        # Save data to Data Lake
-        await save_to_data_lake(data, created_utc)
+        for e in data:
+            json_event = json.loads(e)
+            created_utc = datetime.datetime.utcfromtimestamp(json_event.get("created_utc"))
+            # Save data to Data Lake
+            await save_to_data_lake(json_event, created_utc)
+            
     except Exception as e:
         logging.error(f'Error processing event: {e}')
 
@@ -44,6 +47,8 @@ async def on_event(partition_context, event):
 
 
 async def main():
+    start_time = datetime.datetime(2024, 1, 23, 21, 0, 0, tzinfo=datetime.timezone.utc)
+    
     consumer_client = EventHubConsumerClient.from_connection_string(
         eventhub_connection_str,
         consumer_group="$Default",
@@ -51,8 +56,7 @@ async def main():
     )
 
     async with consumer_client:
-        # -1 = read from beginning
-        await consumer_client.receive(on_event=on_event, starting_position="-1")
+        await consumer_client.receive(on_event=on_event, starting_position=start_time)
 
 
 if __name__ == "__main__":
