@@ -20,6 +20,8 @@ async def save_to_data_lake(data, created_time):
             conn_str=f"DefaultEndpointsProtocol=https;AccountName={storage_account_name};AccountKey={storage_account_key};EndpointSuffix=core.windows.net",
             container_name=container_name
         )
+        logging.warning('\tModified...')
+        logging.warning('!!!!!!!!!!!!!!!!!!!!!!!')
         async with container_client:
             blob_client = container_client.get_blob_client(blob=blob_path)
 
@@ -49,7 +51,8 @@ async def main():
         consumer_group="$Default",
         eventhub_name=eventhub_name
     )
-    logging.warning('Change')
+    logging.warning('\tModified...')
+    logging.warning('!!!!!!!!!!!!!!!!!!!!!!!')
     async with consumer_client:
         # -1 = read from beginning
         await consumer_client.receive(on_event=on_event, starting_position="-1")

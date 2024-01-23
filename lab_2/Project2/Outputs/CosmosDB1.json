@@ -1,0 +1,14 @@
+{
+    "Name": "CosmosDB1",
+    "DataSourceType": "DocumentDB",
+    "DocumentDbProperties": {
+        "AccountId": "tpiuocosmosaccount",
+        "AccountKey": "********",
+        "Database": "cosmosdb",
+        "ContainerName": "cosmoscontainer",
+        "DocumentId": "",
+        "AuthenticationMode": "ConnectionString"
+    },
+    "DataSourceCredentialDomain": "d0816a5b-b232-4a05-a093-e901b44ed512.StreamAnalystics",
+    "ScriptType": "Output"
+}

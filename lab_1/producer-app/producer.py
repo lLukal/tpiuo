@@ -58,6 +58,9 @@ with producer_client:
         logging.warning('\tDone!')
         logging.warning('------------------------')
         
+        logging.warning('\tModified...')
+        logging.warning('!!!!!!!!!!!!!!!!!!!!!!!')
+        
         time.sleep(10)
 
     while True:
