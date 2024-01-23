@@ -39,26 +39,32 @@ reddit = praw.Reddit(client_id=reddit_client_id,
                      username=reddit_username,
                      password=reddit_password)
 subreddit = reddit.subreddit(reddit_subreddit)
-top_posts = subreddit.top(limit=reddit_post_limit, time_filter='all', params={'after': ''})
 
 
 # Azure Event Hub part
 producer_client = EventHubProducerClient.from_connection_string(conn_str=eventhub_connection_str, eventhub_name=eventhub_name)
 
 with producer_client:
-    for post in top_posts:
+    after_param = ''
+    for _ in range(100):
         logging.warning('------------------------')
-        logging.warning('Sending post to Event Hub...')
+        logging.warning(f'Sending next {reddit_post_limit} posts to Event Hub...')
         
-        json_data = json.dumps(post, default=submission_serializer)
+        all_posts = []
+        top_posts = subreddit.top(limit=reddit_post_limit, time_filter='all', params={'after': after_param})
+        json_data = None
+        
+        for post in top_posts:
+            logging.warning(post)
+            json_data = json.dumps(post, default=submission_serializer)
+            all_posts.append(json_data)
 
-        event_data = EventData(body=json_data)
-        producer_client.send_event(event_data)
+        batch_event_data = EventData(body=json.dumps(all_posts))
+        producer_client.send_event(batch_event_data)
+        after_param = json.loads(json_data)['fullname'] if top_posts else ''
         
-        logging.warning('\tDone!')
+        logging.warning(f'\tDone...')
         logging.warning('------------------------')
-        logging.warning('\tModified...')
-        logging.warning('!!!!!!!!!!!!!!!!!!!!!!!')
         
         time.sleep(10)
 
