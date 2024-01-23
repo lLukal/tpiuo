@@ -2,3 +2,4 @@ azure-core==1.29.5
 azure-eventhub==5.11.4
 azure-identity==1.15.0
 azure-storage-blob
+aiohttp
