@@ -6,8 +6,22 @@
 -- For more information, please visit: https://docs.microsoft.com/en-us/azure/stream-analytics/quick-create-visual-studio-code
 
 SELECT
-	*
+		id AS id,
+    STR_FIELD as item,
+    author_fullname,
+		title,
+		selftext,
+		ups,
+		downs,
+		upvote_ratio,
+		score,
+		created_utc,
+		num_comments,
+		is_video,
+		is_reddit_media_domain
 INTO
-	[YourOutputAlias]
+	CosmosDB1
 FROM
-	[YourInputAlias]
+	EventHub1
+WHERE 
+    num_comments > 0

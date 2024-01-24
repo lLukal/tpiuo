@@ -5,7 +5,7 @@
         "AccountId": "tpiuocosmosaccount",
         "AccountKey": "********",
         "Database": "cosmosdb",
-        "ContainerName": "cosmoscontainer",
+        "ContainerName": "Items",
         "DocumentId": "",
         "AuthenticationMode": "ConnectionString"
     },
